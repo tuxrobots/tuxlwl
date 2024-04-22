@@ -14,10 +14,6 @@ At Tux-Robotics, our mission is to inspire creativity, curiosity, and a love for
 
 Our team is constantly working on exciting robotics projects, ranging from autonomous robots playing soccer to different rescue robots, which are all participating at the RoboCup Junior.
 
-## Contributors
-
-This project is made possible by the contributions of our dedicated team members. Check out the [Contributors](./CONTRIBUTORS.md) section to see who has contributed to Tux-Robotics.
-
 ## License
 
 The files contained in the folder 'hardware' are licensed under the [CERN-OHL-W-2.0](./LICENSE.txt), while the rest of the repository, including the folder 'software' are licensed under the [GPL-3.0](./LICENSE_software.txt).
