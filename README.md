@@ -16,4 +16,4 @@ Our team is constantly working on exciting robotics projects, ranging from auton
 
 ## License
 
-The files contained in the folder 'hardware' are licensed under the [CERN-OHL-W-2.0](./LICENSE.txt), while the rest of the repository, including the folder 'software' are licensed under the [GPL-3.0](./LICENSE_software.txt).
+The files contained in the folder 'hardware' are licensed under the [CERN-OHL-W-2.0](./LICENSE.txt), while the rest of the repository, including the folder 'software' are licensed under the [GPL-3.0](./LICENSE-software.txt).
