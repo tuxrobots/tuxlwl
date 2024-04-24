@@ -67,6 +67,8 @@ void setup() {
     //      The AddMotor function has a third argument variant which you can use to set a manual value for the channels.
     //      The ESP still needs two channels, so when manualChannel=9, channel-A would be 9 and channel-B 10.
     driver.AddMotor(3, 15, 9);
+
+    // -Daniel
 }
 
 void loop() {}
