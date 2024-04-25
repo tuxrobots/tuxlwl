@@ -56,16 +56,18 @@ void setup() {
     // DE: Ein weiteres Argument ändert die Drehrichtung des Motors (0 or 1).
     driver.SetPower(0, 150, 1);
 
-    // DE:  WICHTIG: Das ESP kontrolliert PWM nicht mit analogWrite, sondern mit ledcSetup/ledcAttachPin/ledcWrite.
-    //      Es nutzt Kanäle, um die PWM Stärke zu setzen. Die Bibliothek interessiert es nicht, ob vorher bereits ein Kanal zugewiesen wurde.
-    //      Falls du weitere PWM Kanäle nutzen möchtest, musst du sicherstellen, dass diese nicht überschrieben werden.
-    //      Die AddMotor Funktion lässt hat eine Variante mit einem weiteren Argument, mit dem du einen manuelles Wert für die Kanäle einfügen kannst.
-    //      Das ESP braucht aber weiterhin zwei Kanäle, also wäre bei manualChannel=9 Kanal-A dann 9 und Kanal-B 10.
+
     // EN:  IMPORTANT: The ESP does not control PWM with analogWrite, but with ledcSetup/ledcAttachPin/ledcWrite.
     //      It uses channels to set the PWM strength. The library does not care if a channel has already been assigned.
     //      If you want to use additional PWM channels, make sure that these are not overwritten.
     //      The AddMotor function has a third argument variant which you can use to set a manual value for the channels.
     //      The ESP still needs two channels, so when manualChannel=9, channel-A would be 9 and channel-B 10.
+    // DE:  WICHTIG: Das ESP kontrolliert PWM nicht mit analogWrite, sondern mit ledcSetup/ledcAttachPin/ledcWrite.
+    //      Es nutzt Kanäle, um die PWM Stärke zu setzen. Die Bibliothek interessiert es nicht, ob vorher bereits ein Kanal zugewiesen wurde.
+    //      Falls du weitere PWM Kanäle nutzen möchtest, musst du sicherstellen, dass diese nicht überschrieben werden.
+    //      Die AddMotor Funktion lässt hat eine Variante mit einem weiteren Argument, mit dem du einen manuelles Wert für die Kanäle einfügen kannst.
+    //      Das ESP braucht aber weiterhin zwei Kanäle, also wäre bei manualChannel=9 Kanal-A dann 9 und Kanal-B 10.
+
     driver.AddMotor(3, 15, 9);
 
     // -Daniel
