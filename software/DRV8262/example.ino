@@ -51,10 +51,10 @@ void setup() {
 
     // EN: This sets the power to the motor (0-255).
     // DE: Hiermit wird die Leistung für den Motor eingestellt (0-255).
-    driver.SetPower(0, 150);
+    driver.SetPower(0, 50);
     // EN: Adding another argument lets you change the motor direction (0 or 1).
     // DE: Ein weiteres Argument ändert die Drehrichtung des Motors (0 or 1).
-    driver.SetPower(0, 150, 1);
+    driver.SetPower(1, 50, 1);
 
 
     // EN:  IMPORTANT: The ESP does not control PWM with analogWrite, but with ledcSetup/ledcAttachPin/ledcWrite.
@@ -68,9 +68,9 @@ void setup() {
     //      Die AddMotor Funktion lässt hat eine Variante mit einem weiteren Argument, mit dem du einen manuelles Wert für die Kanäle einfügen kannst.
     //      Das ESP braucht aber weiterhin zwei Kanäle, also wäre bei manualChannel=9 Kanal-A dann 9 und Kanal-B 10.
 
-    driver.AddMotor(3, 15, 9);
+    //driver.AddMotor(3, 15, 9);
 
-    // -Daniel
+    // - Daniel
 }
 
 void loop() {}
