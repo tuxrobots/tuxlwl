@@ -4,11 +4,7 @@ Welcome to Tux-Robotics, the robotics teams representing Gymnasium Rahden from G
 
 ## About Us
 
-Tux-Robotics is a passionate group of students dedicated to exploring the fascinating world of robotics. With a focus on innovation, collaboration, and problem-solving, we aim to push the boundaries of what is possible in the field of robotics while having fun along the way.
-
-## Our Mission
-
-At Tux-Robotics, our mission is to inspire creativity, curiosity, and a love for STEM (Science, Technology, Engineering, and Mathematics) among students.
+Tux-Robotics is a group of students exploring the fascinating world of robotics. With a focus on innovation, collaboration, and problem-solving, we aim to push the boundaries of what is possible in the field of robotics while having fun along the way.
 
 ## Projects
 
