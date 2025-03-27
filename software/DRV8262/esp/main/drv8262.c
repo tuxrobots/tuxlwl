@@ -27,6 +27,7 @@
 ***************************************************************************/
 
 #include "driver/ledc.h"
+#include "esp_heap_caps.h"
 
 #define DRV8262_LEDC_MODE LEDC_LOW_SPEED_MODE
 #define DRV8262_DIRECTION_FORWARD 0
@@ -49,10 +50,25 @@ typedef struct {
 
 typedef drv8262_motor_ctx_t* drv8262_motor_handle_t;
 
+static esp_err_t drv8262_motor_deinit(drv8262_motor_handle_t handle)
+{
+  free(handle);
+  handle = NULL;
+
+  return ESP_OK;
+}
+
 static esp_err_t drv8262_motor_init(ledc_timer_config_t* ledc_timer, drv8262_motor_pin_t pin_a, drv8262_motor_pin_t pin_b, drv8262_motor_channel_t channel_a, drv8262_motor_channel_t channel_b, drv8262_motor_handle_t *out_handle)
 {
   if (ledc_timer == NULL) {
     return ESP_ERR_INVALID_ARG;
+  }
+
+  esp_err_t err_ret = ESP_OK;
+  drv8262_motor_ctx_t *context = heap_caps_calloc(1, sizeof(drv8262_motor_ctx_t), MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
+  if (context == NULL) {
+    err_ret = ESP_ERR_NO_MEM;
+    goto cleanup;
   }
 
   ledc_channel_config_t ledc_channel_a = {
@@ -64,9 +80,9 @@ static esp_err_t drv8262_motor_init(ledc_timer_config_t* ledc_timer, drv8262_mot
     .duty       = 0,
     .hpoint     = 0,
   };
-  esp_err_t err_ret = (ledc_channel_config(&ledc_channel_a));
+  err_ret = (ledc_channel_config(&ledc_channel_a));
   if (err_ret != ESP_OK) {
-    return err_ret;
+    goto cleanup;
   }
 
   ledc_channel_config_t ledc_channel_b = {
@@ -80,10 +96,9 @@ static esp_err_t drv8262_motor_init(ledc_timer_config_t* ledc_timer, drv8262_mot
   };
   err_ret = (ledc_channel_config(&ledc_channel_b));
   if (err_ret != ESP_OK) {
-    return err_ret;
+    goto cleanup;
   }
 
-  drv8262_motor_ctx_t *context = out_handle;
   context->timer = ledc_timer;
   context->channel_a = channel_a;
   context->pin_a = pin_a;
@@ -92,7 +107,11 @@ static esp_err_t drv8262_motor_init(ledc_timer_config_t* ledc_timer, drv8262_mot
 
   *out_handle = context;
 
-  return ESP_OK;
+  return err_ret;
+
+cleanup:
+  drv8262_motor_deinit(context);
+  return err_ret;
 }
 
 static esp_err_t drv8262_apply(drv8262_motor_handle_t handle) {
